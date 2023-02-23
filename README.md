@@ -5,8 +5,8 @@ A slay the spire mod
 
 # Game machinics
 
-# Death's Calling 
+## Starting Relic - Death's Calling 
 All enemies in combat will gain deathMarked
 
-# DeathMarked
+## Debuff - DeathMarked
 When DeathMarked wears off, takes hudge damage
