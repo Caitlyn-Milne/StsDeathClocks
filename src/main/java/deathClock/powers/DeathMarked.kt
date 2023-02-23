@@ -25,7 +25,7 @@ class DeathMarkedPower(creature : AbstractCreature, amount : Int) : AbstractPowe
     private val powerStrings = CardCrawlGame.languagePack.getPowerStrings(id)
 
     init{
-        this.region48 = TextureAtlas.AtlasRegion(TextureLoader.getTexture("images/powers/SusSmall.png"),0,0,32,32)
+        this.region48 = TextureAtlas.AtlasRegion(TextureLoader.getTexture("images/powers/GrimReaperSmall.png"),0,0,32,32)
         this.region128 = TextureAtlas.AtlasRegion(TextureLoader.getTexture("images/powers/SusLarge.png"),0,0,84,84)
         this.type = PowerType.DEBUFF
         this.ID = id
