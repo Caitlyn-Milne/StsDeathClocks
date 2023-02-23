@@ -1,0 +1,8 @@
+{
+  "DeathClock:DeathMarked": {
+    "NAME": "Death Marked",
+    "DESCRIPTIONS": [
+      "When death marked hits 0, will take x damage"
+    ]
+  }
+}

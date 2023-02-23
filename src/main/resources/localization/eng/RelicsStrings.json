@@ -1,0 +1,9 @@
+{
+  "DeathClock:DeathsCalling": {
+    "NAME": "Death's Calling",
+    "FLAVOR": "Death will be watching",
+    "DESCRIPTIONS": [
+      "Puts a death mark on you and enemies"
+    ]
+  }
+}
