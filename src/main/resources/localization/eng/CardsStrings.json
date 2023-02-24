@@ -1,0 +1,6 @@
+{
+  "DeathClock:ScytheStrike": {
+    "NAME": "Scythe Strike",
+    "DESCRIPTION": "Deal !D! damage. Also reduce a stack of DeathMarked"
+  }
+}

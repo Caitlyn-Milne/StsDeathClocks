@@ -1,14 +1,10 @@
 package deathClock
 
 import basemod.abstracts.CustomRelic
-import com.brashmonkey.spriter.Player
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction
+import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
-import com.megacrit.cardcrawl.rooms.AbstractRoom
-import deathClock.DeathClock
-import deathClock.TextureLoader
 
 class DeathsCalling : CustomRelic(
     ID,
@@ -27,15 +23,15 @@ class DeathsCalling : CustomRelic(
 
     override fun atBattleStart() {
         super.atBattleStart()
-        AbstractDungeon.player!!.applyDeathMarked(6)
+        AbstractDungeon.player!!.applyDeathMarked(DeathMarkedPower.reapplyAmount)
         AbstractDungeon.getMonsters().monsters.forEach { monster ->
-            monster.applyDeathMarked(6)
+            monster.applyDeathMarked(DeathMarkedPower.reapplyAmount)
         }
     }
 
     override fun onSpawnMonster(monster: AbstractMonster) {
         super.onSpawnMonster(monster)
         val player : AbstractPlayer = AbstractDungeon.player!!
-        monster.applyDeathMarked(player,6)
+        monster.applyDeathMarked(player,DeathMarkedPower.reapplyAmount)
     }
 }
