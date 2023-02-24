@@ -2,6 +2,7 @@ package deathClock
 
 import basemod.abstracts.CustomRelic
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect
+import com.megacrit.cardcrawl.cards.red.Barricade
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster

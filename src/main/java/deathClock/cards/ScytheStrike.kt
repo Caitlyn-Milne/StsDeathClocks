@@ -40,11 +40,8 @@ class ScytheStrike : CustomCard(
     }
 
     override fun upgrade() {
+        if(upgraded) return
         upgradeDamage(3)
-    }
-
-    override fun canUpgrade(): Boolean {
-        return timesUpgraded < 1
     }
 
     override fun use(player : AbstractPlayer, monster: AbstractMonster) {

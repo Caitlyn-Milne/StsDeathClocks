@@ -14,6 +14,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.localization.CardStrings
 import com.megacrit.cardcrawl.localization.PowerStrings
 import com.megacrit.cardcrawl.localization.RelicStrings
+import deathClock.cards.DodgeDeath
 import deathClock.cards.ScytheStrike
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
@@ -72,9 +73,11 @@ class DeathClock :
 
     override fun receiveEditCards() {
         BaseMod.addCard(ScytheStrike())
+        BaseMod.addCard(DodgeDeath())
     }
 
     override fun receivePostCreateStartingDeck(player : AbstractPlayer.PlayerClass, cards: CardGroup) {
         cards.addToBottom(ScytheStrike())
+        cards.addToBottom(DodgeDeath())
     }
 }

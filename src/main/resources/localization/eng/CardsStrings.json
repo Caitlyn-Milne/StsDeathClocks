@@ -2,5 +2,9 @@
   "DeathClock:ScytheStrike": {
     "NAME": "Scythe Strike",
     "DESCRIPTION": "Deal !D! damage. Also reduce a stack of DeathMarked"
+  },
+  "DeathClock:DodgeDeath": {
+    "NAME": "Dodge Death",
+    "DESCRIPTION": "Gain !B! Block. Also gain a stack of DeathMarked"
   }
 }
