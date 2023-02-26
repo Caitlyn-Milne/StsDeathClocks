@@ -1,7 +1,9 @@
 package deathClock
 
+import basemod.helpers.VfxBuilder
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.megacrit.cardcrawl.actions.AbstractGameAction
+import com.megacrit.cardcrawl.actions.animations.VFXAction
 import com.megacrit.cardcrawl.actions.common.DamageAction
 import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction
 import com.megacrit.cardcrawl.actions.utility.SFXAction
@@ -49,7 +51,7 @@ class SummonDeathPower(creature : AbstractCreature, amount : Int) : AbstractPowe
 
     override fun onApplyPower(power: AbstractPower, target: AbstractCreature, source: AbstractCreature) {
         super.onApplyPower(power, target, source)
-        if(power is SummonDeathPower && power.amount + amount >= 5) {
+        if(power is SummonDeathPower && target.getPower(Id).amount + power.amount >= 5) {
             power.summonDeath()
         }
     }

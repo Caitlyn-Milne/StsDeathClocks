@@ -7,6 +7,8 @@ import basemod.interfaces.EditRelicsSubscriber
 import basemod.interfaces.EditStringsSubscriber
 import basemod.interfaces.PostCreateStartingDeckSubscriber
 import basemod.interfaces.PostCreateStartingRelicsSubscriber
+import com.badlogic.gdx.graphics.Color
+import com.badlogic.gdx.utils.compression.lzma.Base
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
 import com.megacrit.cardcrawl.cards.CardGroup
 import com.megacrit.cardcrawl.cards.blue.Strike_Blue
@@ -34,6 +36,24 @@ class DeathClock :
         @JvmStatic
         fun initialize() {
             DeathClock()
+            BaseMod.addColor(
+                /* color = */ AbstractCardEnum.DEATH_CLOCK_DEATH,
+                /* bgColor = */ Color.RED,
+                /* backColor = */ Color.RED,
+                /* frameColor = */ Color.GREEN,
+                /* frameOutlineColor = */ Color.MAGENTA,
+                /* descBoxColor = */ Color.CORAL,
+                /* trailVfxColor = */ Color.WHITE,
+                /* glowColor = */ Color.WHITE,
+                /* attackBg = */ "images/cardback/bg_attack.png",
+                /* skillBg = */ "images/cardback/bg_skill.png",
+                /* powerBg = */ "images/cardback/bg_power.png",
+                /* energyOrb = */ "images/cardback/energy_orb.png",
+                /* attackBgPortrait = */ "images/cardback/bg_attack_p.png",
+                /* skillBgPortrait = */ "images/cardback/bg_skill_p.png",
+                /* powerBgPortrait = */ "images/cardback/bg_power_p.png",
+                /* energyOrbPortrait = */ "images/cardback/energy_orb_p.png"
+            )
         }
 
         fun getId(name : String) : String{
@@ -77,6 +97,11 @@ class DeathClock :
     }
 
     override fun receivePostCreateStartingDeck(player : AbstractPlayer.PlayerClass, cards: CardGroup) {
+        cards.addToBottom(ScytheStrike())
+        cards.addToBottom(ScytheStrike())
+        cards.addToBottom(ScytheStrike())
+        cards.addToBottom(ScytheStrike())
+        cards.addToBottom(ScytheStrike())
         cards.addToBottom(ScytheStrike())
         cards.addToBottom(DodgeDeath())
     }

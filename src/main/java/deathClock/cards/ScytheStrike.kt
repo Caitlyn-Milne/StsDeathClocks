@@ -5,6 +5,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.monsters.AbstractMonster
+import deathClock.AbstractCardEnum
 import deathClock.DeathClock.Companion.getId
 import deathClock.applySummonDeath
 import deathClock.damage
@@ -18,7 +19,7 @@ class ScytheStrike : CustomCard(
     cost,
     description,
     CardType.ATTACK,
-    CardColor.COLORLESS,
+    AbstractCardEnum.DEATH_CLOCK_DEATH,
     CardRarity.BASIC,
     CardTarget.ENEMY) {
 
