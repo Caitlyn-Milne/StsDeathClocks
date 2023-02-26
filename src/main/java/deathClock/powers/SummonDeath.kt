@@ -11,6 +11,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo
 import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon.id
 import com.megacrit.cardcrawl.powers.AbstractPower
 import com.megacrit.cardcrawl.powers.TheBombPower
 import org.apache.logging.log4j.LogManager
@@ -19,7 +20,7 @@ import org.apache.logging.log4j.Logger
 class SummonDeathPower(creature : AbstractCreature, amount : Int) : AbstractPower() {
 
     companion object{
-        var deathCalledDamage = 40
+        var deathCalledDamage = 30
         val Id = DeathClock.getId("SummonDeath")
         val logger: Logger = LogManager.getLogger(SummonDeathPower::class.java)
     }
@@ -51,7 +52,9 @@ class SummonDeathPower(creature : AbstractCreature, amount : Int) : AbstractPowe
 
     override fun onApplyPower(power: AbstractPower, target: AbstractCreature, source: AbstractCreature) {
         super.onApplyPower(power, target, source)
-        if(power is SummonDeathPower && target.getPower(Id).amount + power.amount >= 5) {
+        if(power !is SummonDeathPower) return
+        val currentAmount : Int = target.getPower(Id)?.amount ?: 0
+        if (currentAmount + power.amount >= 5) {
             power.summonDeath()
         }
     }
@@ -65,11 +68,12 @@ class SummonDeathPower(creature : AbstractCreature, amount : Int) : AbstractPowe
         val damageInfo = DamageInfo(owner,deathCalledDamage,DamageInfo.DamageType.HP_LOSS)
         val damageAction = DamageAction(owner, damageInfo, AbstractGameAction.AttackEffect.SLASH_HEAVY)
         val sfxAction = SFXAction("MONSTER_CHAMP_SLAP")
-        val removeAction = RemoveSpecificPowerAction(owner,owner,this)
+        val removeAction = RemoveSpecificPowerAction(owner,owner, ID)
 
+        actionManager.addToBottom(removeAction)
         actionManager.addToBottom(sfxAction)
         actionManager.addToBottom(damageAction)
-        actionManager.addToBottom(removeAction)
+
     }
 }
 
