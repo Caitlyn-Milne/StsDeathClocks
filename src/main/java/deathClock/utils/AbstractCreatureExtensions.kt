@@ -3,25 +3,26 @@ package deathClock
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction
 import com.megacrit.cardcrawl.actions.common.DamageAction
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction
 import com.megacrit.cardcrawl.cards.DamageInfo
 import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 
-fun AbstractCreature.applyDeathMarked(amount : Int = 1) {
-    this.applyDeathMarked(this, amount)
+fun AbstractCreature.applySummonDeath(amount : Int = 1) {
+    this.applySummonDeath(this, amount)
 }
 
-fun AbstractCreature.applyDeathMarked(source : AbstractCreature, amount : Int = 1) {
-    val action = ApplyPowerAction(this,source, DeathMarkedPower(this,amount))
+fun AbstractCreature.applySummonDeath(source : AbstractCreature, amount : Int = 1) {
+    val action = ApplyPowerAction(this,source, SummonDeathPower(this,amount))
     AbstractDungeon.actionManager.addToBottom(action)
 }
 
-fun AbstractCreature.reduceDeathMarked(amount : Int = 1) {
-    this.reduceDeathMarked(this, amount)
+fun AbstractCreature.reduceSummonDeath(amount : Int = 1) {
+    this.reduceSummonDeath(this, amount)
 }
 
-fun AbstractCreature.reduceDeathMarked(source : AbstractCreature, amount : Int = 1) {
-    val action = ReduceDeathMarkAction(this, source, amount)
+fun AbstractCreature.reduceSummonDeath(source : AbstractCreature, amount : Int = 1) {
+    val action = ReducePowerAction(this, source, SummonDeathPower.Id, amount)
     AbstractDungeon.actionManager.addToTop(action)
 }
 

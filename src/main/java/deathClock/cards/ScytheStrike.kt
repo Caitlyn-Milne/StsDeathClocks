@@ -1,17 +1,14 @@
 package deathClock.cards
 
 import basemod.abstracts.CustomCard
-import basemod.abstracts.CustomReward
 import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect
-import com.megacrit.cardcrawl.cards.DamageInfo
-import com.megacrit.cardcrawl.cards.blue.Strike_Blue
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.CardCrawlGame
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import deathClock.DeathClock.Companion.getId
+import deathClock.applySummonDeath
 import deathClock.damage
-import deathClock.reduceDeathMarked
+import deathClock.reduceSummonDeath
 
 
 class ScytheStrike : CustomCard(
@@ -46,6 +43,6 @@ class ScytheStrike : CustomCard(
 
     override fun use(player : AbstractPlayer, monster: AbstractMonster) {
         monster.damage(damage, player,attackEffect= AttackEffect.SLASH_DIAGONAL)
-        monster.reduceDeathMarked(player,1)
+        monster.applySummonDeath(player,1)
     }
 }

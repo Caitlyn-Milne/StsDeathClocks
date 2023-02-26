@@ -1,11 +1,9 @@
 package deathClock
 
 import basemod.abstracts.CustomRelic
-import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect
-import com.megacrit.cardcrawl.cards.red.Barricade
-import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
-import com.megacrit.cardcrawl.monsters.AbstractMonster
+import org.apache.logging.log4j.LogManager
+import org.apache.logging.log4j.Logger
 
 class DeathsCalling : CustomRelic(
     ID,
@@ -15,6 +13,7 @@ class DeathsCalling : CustomRelic(
 ) {
 
     companion object {
+        val logger: Logger = LogManager.getLogger(DeathsCalling::class.java)
         val ID = DeathClock.getId("DeathsCalling")
     }
 
@@ -22,17 +21,12 @@ class DeathsCalling : CustomRelic(
         return DESCRIPTIONS[0]
     }
 
-    override fun atBattleStart() {
-        super.atBattleStart()
-        AbstractDungeon.player!!.applyDeathMarked(DeathMarkedPower.reapplyAmount)
+    override fun atTurnStart() {
+        super.atTurnStart()
+        AbstractDungeon.player!!.applySummonDeath(1)
         AbstractDungeon.getMonsters().monsters.forEach { monster ->
-            monster.applyDeathMarked(DeathMarkedPower.reapplyAmount)
+            monster.applySummonDeath(1)
         }
     }
 
-    override fun onSpawnMonster(monster: AbstractMonster) {
-        super.onSpawnMonster(monster)
-        val player : AbstractPlayer = AbstractDungeon.player!!
-        monster.applyDeathMarked(player,DeathMarkedPower.reapplyAmount)
-    }
 }

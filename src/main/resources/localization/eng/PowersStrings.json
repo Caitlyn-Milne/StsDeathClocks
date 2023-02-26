@@ -1,8 +1,8 @@
 {
-  "DeathClock:DeathMarked": {
-    "NAME": "Death Marked",
+  "DeathClock:SummonDeath": {
+    "NAME": "Summon Death",
     "DESCRIPTIONS": [
-      "When death marked hits 0, will take x damage"
+      "Upon receiving 5 stacks of summon death, will take !D! damage"
     ]
   }
 }

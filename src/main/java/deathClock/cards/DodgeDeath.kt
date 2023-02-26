@@ -2,19 +2,18 @@ package deathClock.cards
 
 import basemod.abstracts.CustomCard
 import com.megacrit.cardcrawl.actions.common.GainBlockAction
-import com.megacrit.cardcrawl.cards.blue.Defend_Blue
-import com.megacrit.cardcrawl.cards.blue.Strike_Blue
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
 import deathClock.DeathClock
-import deathClock.applyDeathMarked
+import deathClock.applySummonDeath
+import deathClock.reduceSummonDeath
 
 class DodgeDeath() : CustomCard(
     ID,
     name,
-    "images/cards/ScytheStrike.png",
+    "images/cards/DodgeDeath.png",
     cost,
     description,
     CardType.SKILL,
@@ -39,12 +38,12 @@ class DodgeDeath() : CustomCard(
 
     override fun upgrade() {
         if(upgraded) return
-        upgradeBlock(6)
+        upgradeBlock(3)
     }
 
     override fun use(player : AbstractPlayer, monster : AbstractMonster?) {
         val action = GainBlockAction(player, block)
         AbstractDungeon.actionManager.addToTop(action)
-        player.applyDeathMarked(1)
+        player.reduceSummonDeath(1)
     }
 }

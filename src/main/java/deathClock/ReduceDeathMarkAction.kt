@@ -6,7 +6,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.powers.AbstractPower
 /**
  * Action for reducing the death mark, used because normal game removals should not call death
- */
+ *//*
 class ReduceDeathMarkAction(
     target: AbstractCreature,
     source: AbstractCreature,
@@ -14,7 +14,7 @@ class ReduceDeathMarkAction(
 ) : ReducePowerAction(
     target,
     source,
-    DeathMarkedPower.Id,
+    SummonDeathPower.Id,
     amount
 ) {
     override fun update() {
@@ -22,17 +22,17 @@ class ReduceDeathMarkAction(
             tickDuration()
             return
         }
-        val reduceMe: AbstractPower = target.getPower(DeathMarkedPower.Id) ?: return
+        val reduceMe: AbstractPower = target.getPower(SummonDeathPower.Id) ?: return
 
         if (amount < reduceMe.amount) {
             reduceMe.reducePower(amount)
             reduceMe.updateDescription()
             AbstractDungeon.onModifyPower()
-        } else if (reduceMe is DeathMarkedPower) {
+        } else if (reduceMe is SummonDeathPower) {
             reduceMe.reducePower(1)
-            reduceMe.callDeath()
+            reduceMe.summonDeath()
             reduceMe.reapply()
         }
         tickDuration()
     }
-}
+}*/
