@@ -23,6 +23,6 @@
   },
   "DeathClock:NewLife": {
     "NAME": "New Life",
-    "DESCRIPTION": "Resets deathclock:Summon_Death"
+    "DESCRIPTION": "Resets your deathclock:Summon_Death, gain !B! block for every stack removed"
   }
 }

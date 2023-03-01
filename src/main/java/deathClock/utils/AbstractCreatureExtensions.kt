@@ -29,7 +29,7 @@ fun AbstractCreature.reduceSummonDeath(source : AbstractCreature, amount : Int =
 
 fun AbstractCreature.resetSummonDeath(source : AbstractCreature? = null) {
     val action = RemoveSpecificPowerAction(this, source ?: this, SummonDeathPower.Id)
-    AbstractDungeon.actionManager.addToTop(action)
+    AbstractDungeon.actionManager.addToBottom(action)
 }
 
 fun AbstractCreature.damage(
