@@ -50,6 +50,5 @@ class DodgeDeath() : CustomCard(
         val action = GainBlockAction(player, block)
         AbstractDungeon.actionManager.addToTop(action)
         player.reduceSummonDeath(baseMagicNumber)
-
     }
 }

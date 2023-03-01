@@ -18,11 +18,16 @@
   },
   "DeathClock:NotMyProblem": {
     "NAME": "Not My Problem",
-    "DESCRIPTION": "Inflicts stack(s) of deathclock:Summon_Death equal to the amount of stack(s) you have",
-    "UPGRADE_DESCRIPTION": "Gives your stack(s) of deathclock:Summon_Death to an enemy"
+    "DESCRIPTION": "Inflict an enemy with deathclock:Summon_Death equal to the amount of stack(s) you have",
+    "UPGRADE_DESCRIPTION": "Inflict all enemies with deathclock:Summon_Death equal to the amount of stack(s) you have"
   },
   "DeathClock:NewLife": {
     "NAME": "New Life",
     "DESCRIPTION": "Resets your deathclock:Summon_Death, gain !B! block for every stack removed"
+  },
+  "DeathClock:SevernTrumpets": {
+    "NAME": "Severn Trumpets",
+    "DESCRIPTION": "Increases the amount of damage deathclock:Summon_Death deals by !M!",
+    "UPGRADE_DESCRIPTION": "Innate. Increases the amount of damage deathclock:Summon_Death deals by !M!"
   }
 }

@@ -108,6 +108,10 @@ class DeathClock :
     override fun receiveEditCards() {
         BaseMod.addCard(ScytheStrike())
         BaseMod.addCard(DodgeDeath())
+        BaseMod.addCard(FutureProblem())
+        BaseMod.addCard(NotMyProblem())
+        BaseMod.addCard(NewLife())
+        BaseMod.addCard(SevernTrumpets())
     }
 
     override fun receivePostCreateStartingDeck(player : AbstractPlayer.PlayerClass, cards: CardGroup) {
@@ -116,6 +120,7 @@ class DeathClock :
         cards.addToBottom(FutureProblem())
         cards.addToBottom(NotMyProblem())
         cards.addToBottom(NewLife())
+        cards.addToBottom(SevernTrumpets())
     }
 
     override fun receiveEditKeywords() {

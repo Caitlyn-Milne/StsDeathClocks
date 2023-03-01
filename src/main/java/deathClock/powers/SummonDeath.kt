@@ -1,29 +1,36 @@
 package deathClock
 
-import basemod.helpers.VfxBuilder
 import com.badlogic.gdx.graphics.g2d.TextureAtlas
 import com.megacrit.cardcrawl.actions.AbstractGameAction
-import com.megacrit.cardcrawl.actions.animations.VFXAction
 import com.megacrit.cardcrawl.actions.common.DamageAction
-import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction
+import com.megacrit.cardcrawl.actions.common.ReducePowerAction
 import com.megacrit.cardcrawl.actions.utility.SFXAction
 import com.megacrit.cardcrawl.cards.DamageInfo
 import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.core.CardCrawlGame
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon.actionManager
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon.id
 import com.megacrit.cardcrawl.powers.AbstractPower
-import com.megacrit.cardcrawl.powers.TheBombPower
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
 class SummonDeathPower(creature : AbstractCreature, amount : Int) : AbstractPower() {
 
     companion object{
-        var deathCalledDamage = 25
-        var requiredStacks = 5
+        var baseDamage = 30
+        val damage get() = baseDamage + damageDelta
+        var baseRequiredStacks = 5
+        private var damageDelta = 0
         val Id = DeathClock.getId("SummonDeath")
         val logger: Logger = LogManager.getLogger(SummonDeathPower::class.java)
+
+        fun increaseDamage(damage : Int) {
+            damageDelta += damage
+            AbstractDungeon.player.getPower(Id)?.updateDescription()
+            AbstractDungeon.getMonsters().monsters.forEach { monster ->
+                monster.getPower(Id)?.updateDescription()
+            }
+        }
     }
 
     private val powerStrings = CardCrawlGame.languagePack.getPowerStrings(Id)
@@ -49,15 +56,15 @@ class SummonDeathPower(creature : AbstractCreature, amount : Int) : AbstractPowe
 
     override fun updateDescription() {
         description = powerStrings.DESCRIPTIONS[0]
-            .replace("!D!","$deathCalledDamage")
-            .replace("!S!", "$requiredStacks")
+            .replace("!D!","$damage")
+            .replace("!S!", "$baseRequiredStacks")
     }
 
     override fun onApplyPower(power: AbstractPower, target: AbstractCreature, source: AbstractCreature) {
         super.onApplyPower(power, target, source)
         if(power !is SummonDeathPower) return
         val currentAmount : Int = target.getPower(Id)?.amount ?: 0
-        if (currentAmount + power.amount >= requiredStacks) {
+        if (currentAmount + power.amount >= baseRequiredStacks) {
             power.summonDeath()
         }
     }
@@ -68,12 +75,12 @@ class SummonDeathPower(creature : AbstractCreature, amount : Int) : AbstractPowe
     }
 
     fun summonDeath() {
-        val damageInfo = DamageInfo(owner,deathCalledDamage,DamageInfo.DamageType.HP_LOSS)
+        val damageInfo = DamageInfo(owner,damage,DamageInfo.DamageType.HP_LOSS)
         val damageAction = DamageAction(owner, damageInfo, AbstractGameAction.AttackEffect.SLASH_HEAVY)
         val sfxAction = SFXAction("MONSTER_CHAMP_SLAP")
-        val removeAction = RemoveSpecificPowerAction(owner,owner, ID)
+        val reduceAction = ReducePowerAction(owner,owner, ID, baseRequiredStacks)
 
-        actionManager.addToBottom(removeAction)
+        actionManager.addToBottom(reduceAction)
         actionManager.addToBottom(sfxAction)
         actionManager.addToBottom(damageAction)
 

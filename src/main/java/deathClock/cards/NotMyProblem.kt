@@ -32,16 +32,18 @@ class NotMyProblem : CustomCard(
         this.rawDescription = cardStrings.UPGRADE_DESCRIPTION
         upgradeName()
         initializeDescription()
-        upgradeName()
     }
 
     override fun use(p : AbstractPlayer?, monster : AbstractMonster) {
         val player = p ?: AbstractDungeon.player
         val playerAmount = player.getPower(SummonDeathPower.Id).amount
 
-        if(upgraded) {
-            player.resetSummonDeath()
+        if (!upgraded) {
+            monster.applySummonDeath(playerAmount)
+            return
         }
-        monster.applySummonDeath(playerAmount)
+        AbstractDungeon.getMonsters().monsters.forEach {
+            it.applySummonDeath(playerAmount)
+        }
     }
 }

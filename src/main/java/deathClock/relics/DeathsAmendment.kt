@@ -1,11 +1,9 @@
 package deathClock.relics
 
 import basemod.abstracts.CustomRelic
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import deathClock.DeathClock
 import deathClock.SummonDeathPower
 import deathClock.TextureLoader
-import deathClock.applySummonDeath
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 
@@ -28,7 +26,7 @@ class DeathsAmendment : CustomRelic(
 
     override fun atBattleStart() {
         super.atBattleStart()
-        SummonDeathPower.requiredStacks = 4
+        SummonDeathPower.baseRequiredStacks = 4
     }
 
 }
