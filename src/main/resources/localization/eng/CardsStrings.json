@@ -11,11 +11,6 @@
     "NAME": "Future Problem",
     "DESCRIPTION": "Gain !B! Block but you gain !M! stack(s) of deathclock:Summon_Death"
   },
-  "DeathClock:Sacrifice": {
-    "NAME": "Sacrifice",
-    "DESCRIPTION": "Swap the amount of deathclock:Summon_Death with an enemy",
-    "UPGRADE_DESCRIPTION": "Swap the amount of deathclock:Summon_Death with an enemy then resets yours"
-  },
   "DeathClock:NotMyProblem": {
     "NAME": "Not My Problem",
     "DESCRIPTION": "Inflict an enemy with deathclock:Summon_Death equal to the amount of stack(s) you have",
