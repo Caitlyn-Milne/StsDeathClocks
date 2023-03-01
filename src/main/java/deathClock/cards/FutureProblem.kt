@@ -1,19 +1,17 @@
 package deathClock.cards
 
 import basemod.abstracts.CustomCard
-import com.evacipated.cardcrawl.mod.stslib.patches.cardInterfaces.CardSpawnModificationPatch.CardRewardModificationPatches
 import com.megacrit.cardcrawl.actions.common.GainBlockAction
+import com.megacrit.cardcrawl.cards.blue.Blizzard
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
-import com.megacrit.cardcrawl.screens.CardRewardScreen
 import deathClock.AbstractCardEnum
 import deathClock.DeathClock
 import deathClock.applySummonDeath
-import deathClock.reduceSummonDeath
 
-class DodgeDeath() : CustomCard(
+class FutureProblem : CustomCard(
     ID,
     name,
     "images/cards/DodgeDeath.png",
@@ -21,13 +19,12 @@ class DodgeDeath() : CustomCard(
     description,
     CardType.SKILL,
     AbstractCardEnum.DEATH_CLOCK_DEATH,
-    CardRarity.BASIC,
+    CardRarity.COMMON,
     CardTarget.SELF
 ) {
 
-
     companion object {
-        val ID = DeathClock.getId("DodgeDeath")
+        val ID = DeathClock.getId("FutureProblem")
         private val cardStrings = CardCrawlGame.languagePack.getCardStrings(ID)
         val name = cardStrings.NAME!!
         val description = cardStrings.DESCRIPTION!!
@@ -35,21 +32,21 @@ class DodgeDeath() : CustomCard(
     }
 
     init {
-        baseBlock = 5
+        baseBlock = 12
         baseMagicNumber = 1
     }
 
-
     override fun upgrade() {
         if(upgraded) return
-        upgradeBlock(3)
+        upgradeBlock(6)
         upgradeName()
+
     }
 
     override fun use(player : AbstractPlayer, monster : AbstractMonster?) {
         val action = GainBlockAction(player, block)
         AbstractDungeon.actionManager.addToTop(action)
-        player.reduceSummonDeath(baseMagicNumber)
+        player.applySummonDeath(baseMagicNumber)
 
     }
 }

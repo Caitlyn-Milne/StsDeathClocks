@@ -3,7 +3,14 @@
     "NAME": "Death's Calling",
     "FLAVOR": "Death will be watching",
     "DESCRIPTIONS": [
-      "Puts a death mark on you and enemies"
+      "Applies Summon Death on you and enemies at the start of each turn"
+    ]
+  },
+  "DeathClock:DeathsAmendment": {
+    "NAME": "Death's Amendment",
+    "FLAVOR": "Possibly the greatest deal known to Death",
+    "DESCRIPTIONS": [
+      "Decreases the amount of stacks of Summon Death required by 1"
     ]
   }
 }

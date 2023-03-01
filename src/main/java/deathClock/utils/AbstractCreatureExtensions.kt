@@ -4,6 +4,7 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction.AttackEffect
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction
 import com.megacrit.cardcrawl.actions.common.DamageAction
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction
 import com.megacrit.cardcrawl.cards.DamageInfo
 import com.megacrit.cardcrawl.core.AbstractCreature
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
@@ -26,6 +27,10 @@ fun AbstractCreature.reduceSummonDeath(source : AbstractCreature, amount : Int =
     AbstractDungeon.actionManager.addToTop(action)
 }
 
+fun AbstractCreature.resetSummonDeath(source : AbstractCreature? = null) {
+    val action = RemoveSpecificPowerAction(this, source ?: this, SummonDeathPower.Id)
+    AbstractDungeon.actionManager.addToTop(action)
+}
 
 fun AbstractCreature.damage(
     amount: Int,

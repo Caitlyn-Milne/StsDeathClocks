@@ -24,9 +24,9 @@ class ScytheStrike : CustomCard(
     CardTarget.ENEMY) {
 
     init {
-        baseDamage = 4
+        baseDamage = 6
+        baseMagicNumber = 1
         tags.add(CardTags.STRIKE)
-        tags.add(CardTags.STARTER_STRIKE)
     }
 
     companion object{
@@ -40,6 +40,7 @@ class ScytheStrike : CustomCard(
     override fun upgrade() {
         if(upgraded) return
         upgradeDamage(3)
+        upgradeName()
     }
 
     override fun use(player : AbstractPlayer, monster: AbstractMonster) {

@@ -1,0 +1,11 @@
+[
+  {
+    "PROPER_NAME": "Summon Death",
+    "NAMES": [
+      "summon death",
+      "summon_death",
+      "summonDeath"
+    ],
+    "DESCRIPTION": "Upon receiving a number of stacks of summon death, will take a certain amount of damage"
+  }
+]

@@ -2,7 +2,7 @@
   "DeathClock:SummonDeath": {
     "NAME": "Summon Death",
     "DESCRIPTIONS": [
-      "Upon receiving 5 stacks of summon death, will take !D! damage"
+      "Upon receiving !S! stacks of summon death, will take !D! damage"
     ]
   }
 }

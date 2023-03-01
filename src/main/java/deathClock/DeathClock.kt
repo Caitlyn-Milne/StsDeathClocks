@@ -2,25 +2,35 @@ package deathClock
 
 import basemod.BaseMod
 import basemod.helpers.RelicType
-import basemod.interfaces.EditCardsSubscriber
-import basemod.interfaces.EditRelicsSubscriber
-import basemod.interfaces.EditStringsSubscriber
-import basemod.interfaces.PostCreateStartingDeckSubscriber
-import basemod.interfaces.PostCreateStartingRelicsSubscriber
+import basemod.interfaces.*
+import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.Color
-import com.badlogic.gdx.utils.compression.lzma.Base
 import com.evacipated.cardcrawl.modthespire.lib.SpireInitializer
+import com.google.gson.Gson
 import com.megacrit.cardcrawl.cards.CardGroup
-import com.megacrit.cardcrawl.cards.blue.Strike_Blue
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.localization.CardStrings
 import com.megacrit.cardcrawl.localization.PowerStrings
 import com.megacrit.cardcrawl.localization.RelicStrings
-import deathClock.cards.DodgeDeath
-import deathClock.cards.ScytheStrike
+import deathClock.cards.*
+import deathClock.relics.DeathsAmendment
+
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
-import java.util.ArrayList
+import java.lang.String.*
+import java.nio.charset.StandardCharsets
+
+class KeywordInfo(
+    var NAMES: Array<String>,
+    var DESCRIPTION: String,
+    var PROPER_NAME: String
+) {
+    override fun toString(): String {
+        return "NAMES: [${NAMES.joinToString(",")}]\n" +
+                "DESCRIPTION: $DESCRIPTION\n" +
+                "PROPER_NAME: $PROPER_NAME"
+    }
+}
 
 @SpireInitializer
 class DeathClock :
@@ -28,7 +38,8 @@ class DeathClock :
     EditStringsSubscriber,
     EditCardsSubscriber,
     PostCreateStartingDeckSubscriber,
-    PostCreateStartingRelicsSubscriber {
+    PostCreateStartingRelicsSubscriber,
+    EditKeywordsSubscriber{
 
     companion object {
         val logger: Logger = LogManager.getLogger(DeathClock::class.java)
@@ -56,8 +67,10 @@ class DeathClock :
             )
         }
 
+        const val modId = "DeathClock"
+
         fun getId(name : String) : String{
-            return "DeathClock:$name"
+            return "$modId:$name"
         }
     }
 
@@ -84,6 +97,7 @@ class DeathClock :
 
     override fun receiveEditRelics() {
         BaseMod.addRelic(DeathsCalling(), RelicType.SHARED)
+        BaseMod.addRelic(DeathsAmendment(), RelicType.SHARED)
     }
 
     override fun receivePostCreateStartingRelics(player: AbstractPlayer.PlayerClass?, relics: ArrayList<String>) {
@@ -98,11 +112,24 @@ class DeathClock :
 
     override fun receivePostCreateStartingDeck(player : AbstractPlayer.PlayerClass, cards: CardGroup) {
         cards.addToBottom(ScytheStrike())
-        cards.addToBottom(ScytheStrike())
-        cards.addToBottom(ScytheStrike())
-        cards.addToBottom(ScytheStrike())
-        cards.addToBottom(ScytheStrike())
-        cards.addToBottom(ScytheStrike())
         cards.addToBottom(DodgeDeath())
+        cards.addToBottom(FutureProblem())
+        cards.addToBottom(NotMyProblem())
+        cards.addToBottom(NewLife())
+    }
+
+    override fun receiveEditKeywords() {
+        logger.info("KEYWORD ----------------------------------------------------------------")
+        val gson = Gson()
+        val json: String = Gdx.files.internal("localization/eng/Keywords.json")
+            .readString(valueOf(StandardCharsets.UTF_8))
+
+        val keywords = gson.fromJson(json, Array<KeywordInfo>::class.java)
+
+        keywords.forEach { keyword ->
+
+            BaseMod.addKeyword(modId.lowercase(), keyword.PROPER_NAME, keyword.NAMES, keyword.DESCRIPTION)
+            logger.info("added keyword: $keyword")
+        }
     }
 }

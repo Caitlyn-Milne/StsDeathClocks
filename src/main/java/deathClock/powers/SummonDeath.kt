@@ -20,7 +20,8 @@ import org.apache.logging.log4j.Logger
 class SummonDeathPower(creature : AbstractCreature, amount : Int) : AbstractPower() {
 
     companion object{
-        var deathCalledDamage = 30
+        var deathCalledDamage = 25
+        var requiredStacks = 5
         val Id = DeathClock.getId("SummonDeath")
         val logger: Logger = LogManager.getLogger(SummonDeathPower::class.java)
     }
@@ -47,14 +48,16 @@ class SummonDeathPower(creature : AbstractCreature, amount : Int) : AbstractPowe
     }
 
     override fun updateDescription() {
-        description = powerStrings.DESCRIPTIONS[0].replace("!D!","$deathCalledDamage")
+        description = powerStrings.DESCRIPTIONS[0]
+            .replace("!D!","$deathCalledDamage")
+            .replace("!S!", "$requiredStacks")
     }
 
     override fun onApplyPower(power: AbstractPower, target: AbstractCreature, source: AbstractCreature) {
         super.onApplyPower(power, target, source)
         if(power !is SummonDeathPower) return
         val currentAmount : Int = target.getPower(Id)?.amount ?: 0
-        if (currentAmount + power.amount >= 5) {
+        if (currentAmount + power.amount >= requiredStacks) {
             power.summonDeath()
         }
     }

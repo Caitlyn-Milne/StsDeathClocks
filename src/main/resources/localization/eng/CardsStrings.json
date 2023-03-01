@@ -1,10 +1,28 @@
 {
   "DeathClock:ScytheStrike": {
     "NAME": "Scythe Strike",
-    "DESCRIPTION": "Deal !D! damage. Also gain a stack of SummonDeath"
+    "DESCRIPTION": "Deal !D! damage and inflicts !M! stack(s) of deathclock:Summon_Death"
   },
   "DeathClock:DodgeDeath": {
     "NAME": "Dodge Death",
-    "DESCRIPTION": "Gain !B! Block. Also reduce a stack of SummonDeath"
+    "DESCRIPTION": "Gain !B! Block and reduces !M! stack(s) of deathclock:Summon_Death"
+  },
+  "DeathClock:FutureProblem": {
+    "NAME": "Future Problem",
+    "DESCRIPTION": "Gain !B! Block but you gain !M! stack(s) of deathclock:Summon_Death"
+  },
+  "DeathClock:Sacrifice": {
+    "NAME": "Sacrifice",
+    "DESCRIPTION": "Swap the amount of deathclock:Summon_Death with an enemy",
+    "UPGRADE_DESCRIPTION": "Swap the amount of deathclock:Summon_Death with an enemy then resets yours"
+  },
+  "DeathClock:NotMyProblem": {
+    "NAME": "Not My Problem",
+    "DESCRIPTION": "Inflicts stack(s) of deathclock:Summon_Death equal to the amount of stack(s) you have",
+    "UPGRADE_DESCRIPTION": "Gives your stack(s) of deathclock:Summon_Death to an enemy"
+  },
+  "DeathClock:NewLife": {
+    "NAME": "New Life",
+    "DESCRIPTION": "Resets deathclock:Summon_Death"
   }
 }
