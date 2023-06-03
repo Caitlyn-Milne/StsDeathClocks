@@ -6,8 +6,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
-import deathClock.*
-import javax.swing.text.html.HTMLDocument.HTMLReader.BlockAction
+import deathClock.AbstractCardEnum
+import deathClock.DeathClock
+import deathClock.SummonDeathPower
+import deathClock.resetSummonDeath
 
 class NewLife : CustomCard(
     ID,
@@ -16,6 +18,7 @@ class NewLife : CustomCard(
     cost,
     description,
     CardType.SKILL,
+
     AbstractCardEnum.DEATH_CLOCK_DEATH,
     CardRarity.COMMON,
     CardTarget.SELF

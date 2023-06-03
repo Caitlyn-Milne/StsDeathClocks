@@ -5,7 +5,10 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
-import deathClock.*
+import deathClock.AbstractCardEnum
+import deathClock.DeathClock
+import deathClock.SummonDeathPower
+import deathClock.applySummonDeath
 
 class NotMyProblem : CustomCard(
     ID,
@@ -16,7 +19,7 @@ class NotMyProblem : CustomCard(
     CardType.SKILL,
     AbstractCardEnum.DEATH_CLOCK_DEATH,
     CardRarity.UNCOMMON,
-    CardTarget.SELF_AND_ENEMY
+    CardTarget.ENEMY
 ) {
 
     companion object {
@@ -32,14 +35,14 @@ class NotMyProblem : CustomCard(
         this.rawDescription = cardStrings.UPGRADE_DESCRIPTION
         upgradeName()
         initializeDescription()
+        target = CardTarget.ALL_ENEMY
     }
 
-    override fun use(p : AbstractPlayer?, monster : AbstractMonster) {
-        val player = p ?: AbstractDungeon.player
+    override fun use(player : AbstractPlayer, monster : AbstractMonster?) {
         val playerAmount = player.getPower(SummonDeathPower.Id).amount
 
         if (!upgraded) {
-            monster.applySummonDeath(playerAmount)
+            monster?.applySummonDeath(playerAmount)
             return
         }
         AbstractDungeon.getMonsters().monsters.forEach {

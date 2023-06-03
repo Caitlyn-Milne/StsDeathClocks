@@ -1,6 +1,7 @@
 package deathClock
 
 import basemod.BaseMod
+import basemod.abstracts.CustomCard
 import basemod.helpers.RelicType
 import basemod.interfaces.*
 import com.badlogic.gdx.Gdx
@@ -14,7 +15,6 @@ import com.megacrit.cardcrawl.localization.PowerStrings
 import com.megacrit.cardcrawl.localization.RelicStrings
 import deathClock.cards.*
 import deathClock.relics.DeathsAmendment
-
 import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import java.lang.String.*
@@ -43,6 +43,17 @@ class DeathClock :
 
     companion object {
         val logger: Logger = LogManager.getLogger(DeathClock::class.java)
+
+        val DeathCards : List<CustomCard> by lazy { listOf(
+            Satanic(),
+            SevernTrumpets(),
+            NewLife(),
+            NotMyProblem(),
+            FutureProblem(),
+            DodgeDeath(),
+            ScytheStrike()
+        ) }
+
 
         @JvmStatic
         fun initialize() {
@@ -106,12 +117,11 @@ class DeathClock :
     }
 
     override fun receiveEditCards() {
-        BaseMod.addCard(ScytheStrike())
-        BaseMod.addCard(DodgeDeath())
-        BaseMod.addCard(FutureProblem())
-        BaseMod.addCard(NotMyProblem())
-        BaseMod.addCard(NewLife())
-        BaseMod.addCard(SevernTrumpets())
+        logger.info("EDIT CARD -> ADDING CARDS")
+
+        DeathCards.forEach { card ->
+            BaseMod.addCard(card)
+        }
     }
 
     override fun receivePostCreateStartingDeck(player : AbstractPlayer.PlayerClass, cards: CardGroup) {
@@ -121,6 +131,7 @@ class DeathClock :
         cards.addToBottom(NotMyProblem())
         cards.addToBottom(NewLife())
         cards.addToBottom(SevernTrumpets())
+        cards.addToBottom(Satanic())
     }
 
     override fun receiveEditKeywords() {

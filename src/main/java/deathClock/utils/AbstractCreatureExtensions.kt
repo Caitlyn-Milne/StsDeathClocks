@@ -41,3 +41,7 @@ fun AbstractCreature.damage(
     val damage = DamageAction(this, damageInfo, attackEffect)
     AbstractDungeon.actionManager.addToBottom(damage)
 }
+
+fun AbstractCreature.getSummonDeathAmount() : Int {
+    return this.getPower(SummonDeathPower.Id).amount
+}

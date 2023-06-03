@@ -18,11 +18,16 @@
   },
   "DeathClock:NewLife": {
     "NAME": "New Life",
-    "DESCRIPTION": "Resets your deathclock:Summon_Death, gain !B! block for every stack removed"
+    "DESCRIPTION": "Resets your deathclock:Summon_Death, but gain !B! block for every stack removed"
   },
   "DeathClock:SevernTrumpets": {
     "NAME": "Severn Trumpets",
     "DESCRIPTION": "Increases the amount of damage deathclock:Summon_Death deals by !M!",
     "UPGRADE_DESCRIPTION": "Innate. Increases the amount of damage deathclock:Summon_Death deals by !M!"
+  },
+  "DeathClock:Satanic": {
+    "NAME": "Satanic",
+    "DESCRIPTION": "For every stack of deathclock:Summon_Death you have, deal !D! damage",
+    "UPGRADE_DESCRIPTION": "Deals !D! damage, but gain !M! stacks of deathclock:Summon_Death"
   }
 }

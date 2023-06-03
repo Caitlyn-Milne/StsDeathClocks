@@ -1,30 +1,26 @@
 package deathClock.cards
 
 import basemod.abstracts.CustomCard
-import com.megacrit.cardcrawl.actions.common.GainBlockAction
-import com.megacrit.cardcrawl.cards.blue.Blizzard
+import com.megacrit.cardcrawl.actions.AbstractGameAction
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.CardCrawlGame
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
-import deathClock.AbstractCardEnum
-import deathClock.DeathClock
-import deathClock.applySummonDeath
+import deathClock.*
 
-class FutureProblem : CustomCard(
+class Satanic : CustomCard(
     ID,
     name,
     "images/cards/DodgeDeath.png",
     cost,
     description,
-    CardType.SKILL,
+    CardType.ATTACK,
     AbstractCardEnum.DEATH_CLOCK_DEATH,
-    CardRarity.COMMON,
-    CardTarget.SELF
+    CardRarity.UNCOMMON,
+    CardTarget.SELF_AND_ENEMY
 ) {
 
     companion object {
-        val ID = DeathClock.getId("FutureProblem")
+        val ID = DeathClock.getId("Satanic")
         private val cardStrings = CardCrawlGame.languagePack.getCardStrings(ID)
         val name = cardStrings.NAME!!
         val description = cardStrings.DESCRIPTION!!
@@ -32,20 +28,20 @@ class FutureProblem : CustomCard(
     }
 
     init {
-        baseBlock = 12
-        baseMagicNumber = 1
+        baseDamage = 4
     }
 
     override fun upgrade() {
         if(upgraded) return
-        upgradeBlock(6)
+        upgradeDamage(3)
         upgradeName()
-
     }
 
-    override fun use(player : AbstractPlayer, monster : AbstractMonster?) {
-        val action = GainBlockAction(player, block)
-        AbstractDungeon.actionManager.addToTop(action)
+    override fun use(player : AbstractPlayer, monster : AbstractMonster) {
+        val summonDeathAmount = player.getSummonDeathAmount()
+        for (i in 0 until summonDeathAmount) {
+            monster.damage(baseDamage, player, attackEffect=AbstractGameAction.AttackEffect.POISON)
+        }
         player.applySummonDeath(baseMagicNumber)
     }
 }
