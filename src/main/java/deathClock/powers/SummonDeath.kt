@@ -58,7 +58,6 @@ class SummonDeathPower(creature : AbstractCreature, amount : Int) : AbstractPowe
         combatDamageDelta = 0
     }
 
-
     override fun updateDescription() {
         description = powerStrings.DESCRIPTIONS[0]
             .replace("!D!","$damage")

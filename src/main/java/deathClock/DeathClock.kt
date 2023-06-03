@@ -76,6 +76,8 @@ class DeathClock :
                 /* powerBgPortrait = */ "images/cardback/bg_power_p.png",
                 /* energyOrbPortrait = */ "images/cardback/energy_orb_p.png"
             )
+
+            BaseMod.addPower(SummonDeathPower::class.java, SummonDeathPower.Id)
         }
 
         const val modId = "DeathClock"
@@ -113,7 +115,6 @@ class DeathClock :
 
     override fun receivePostCreateStartingRelics(player: AbstractPlayer.PlayerClass?, relics: ArrayList<String>) {
         relics.add(DeathsCalling.ID)
-
     }
 
     override fun receiveEditCards() {

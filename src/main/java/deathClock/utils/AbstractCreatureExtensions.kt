@@ -43,5 +43,5 @@ fun AbstractCreature.damage(
 }
 
 fun AbstractCreature.getSummonDeathAmount() : Int {
-    return this.getPower(SummonDeathPower.Id).amount
+    return this.getPower(SummonDeathPower.Id)?.amount ?: 0
 }

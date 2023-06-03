@@ -5,7 +5,10 @@ import com.megacrit.cardcrawl.actions.AbstractGameAction
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.monsters.AbstractMonster
-import deathClock.*
+import deathClock.AbstractCardEnum
+import deathClock.DeathClock
+import deathClock.damage
+import deathClock.getSummonDeathAmount
 
 class Satanic : CustomCard(
     ID,
@@ -42,6 +45,5 @@ class Satanic : CustomCard(
         for (i in 0 until summonDeathAmount) {
             monster.damage(baseDamage, player, attackEffect=AbstractGameAction.AttackEffect.POISON)
         }
-        player.applySummonDeath(baseMagicNumber)
     }
 }
