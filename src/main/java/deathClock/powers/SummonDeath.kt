@@ -18,14 +18,13 @@ class SummonDeathPower(creature : AbstractCreature, amount : Int) : AbstractPowe
 
     companion object{
         var baseDamage = 30
-        val damage get() = baseDamage + damageDelta
+        val damage get() = baseDamage + combatDamageDelta
         var baseRequiredStacks = 5
-        private var damageDelta = 0
         val Id = DeathClock.getId("SummonDeath")
         val logger: Logger = LogManager.getLogger(SummonDeathPower::class.java)
-
-        fun increaseDamage(damage : Int) {
-            damageDelta += damage
+        var combatDamageDelta = 0
+        fun increaseDamageForCombat(damage : Int) {
+            combatDamageDelta += damage
             AbstractDungeon.player.getPower(Id)?.updateDescription()
             AbstractDungeon.getMonsters().monsters.forEach { monster ->
                 monster.getPower(Id)?.updateDescription()
@@ -52,7 +51,13 @@ class SummonDeathPower(creature : AbstractCreature, amount : Int) : AbstractPowe
     override fun onInitialApplication() {
         super.onInitialApplication()
         logger.info("initial  application ${owner}")
+
     }
+
+    override fun onVictory() {
+        combatDamageDelta = 0
+    }
+
 
     override fun updateDescription() {
         description = powerStrings.DESCRIPTIONS[0]

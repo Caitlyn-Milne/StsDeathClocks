@@ -26,12 +26,15 @@ class SevenTrumpets : CustomCard(
         val name = cardStrings.NAME!!
         val description = cardStrings.DESCRIPTION!!
         const val cost = 2
+        var summonDeathDamageDelta = 0;
     }
 
     init {
         baseMagicNumber = 15
         magicNumber = baseMagicNumber
     }
+
+
 
     override fun upgrade() {
         if(upgraded) return
@@ -42,6 +45,6 @@ class SevenTrumpets : CustomCard(
     }
 
     override fun use(p : AbstractPlayer?, monster : AbstractMonster?) {
-        SummonDeathPower.increaseDamage(magicNumber)
+        SummonDeathPower.increaseDamageForCombat(magicNumber)
     }
 }
