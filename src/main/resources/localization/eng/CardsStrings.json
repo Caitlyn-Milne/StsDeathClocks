@@ -1,33 +1,32 @@
 {
   "DeathClock:ScytheStrike": {
     "NAME": "Scythe Strike",
-    "DESCRIPTION": "Deal !D! damage and inflicts !M! stack(s) of deathclock:Summon_Death"
+    "DESCRIPTION": "Deal !D! damage and inflicts a stack of deathclock:Summon_Death"
   },
   "DeathClock:DodgeDeath": {
     "NAME": "Dodge Death",
-    "DESCRIPTION": "Gain !B! Block and reduces !M! stack(s) of deathclock:Summon_Death"
+    "DESCRIPTION": "Gain !B! Block and reduces a stack of deathclock:Summon_Death"
   },
-  "DeathClock:FutureProblem": {
-    "NAME": "Future Problem",
-    "DESCRIPTION": "Gain !B! Block but you gain !M! stack(s) of deathclock:Summon_Death"
+  "DeathClock:Sacrifice": {
+    "NAME": "Sacrifice",
+    "DESCRIPTION": "Gain !B! Block but you gain a stack of deathclock:Summon_Death"
   },
   "DeathClock:NotMyProblem": {
     "NAME": "Not My Problem",
     "DESCRIPTION": "Inflict an enemy with deathclock:Summon_Death equal to the amount of stack(s) you have",
     "UPGRADE_DESCRIPTION": "Inflict all enemies with deathclock:Summon_Death equal to the amount of stack(s) you have"
   },
-  "DeathClock:NewLife": {
-    "NAME": "New Life",
-    "DESCRIPTION": "Resets your deathclock:Summon_Death, but gain !B! block for every stack removed"
+  "DeathClock:Resurrection": {
+    "NAME": "Resurrection",
+    "DESCRIPTION": "Resets your deathclock:Summon_Death, and gain !B! block for every stack removed"
   },
-  "DeathClock:SevernTrumpets": {
-    "NAME": "Severn Trumpets",
+  "DeathClock:SevenTrumpets": {
+    "NAME": "Seven Trumpets",
     "DESCRIPTION": "Increases the amount of damage deathclock:Summon_Death deals by !M!",
     "UPGRADE_DESCRIPTION": "Innate. Increases the amount of damage deathclock:Summon_Death deals by !M!"
   },
   "DeathClock:Satanic": {
     "NAME": "Satanic",
-    "DESCRIPTION": "For every stack of deathclock:Summon_Death you have, deal !D! damage",
-    "UPGRADE_DESCRIPTION": "Deals !D! damage, but gain !M! stacks of deathclock:Summon_Death"
+    "DESCRIPTION": "For every stack of deathclock:Summon_Death you have, deal !D! damage"
   }
 }

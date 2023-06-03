@@ -11,7 +11,7 @@ import deathClock.DeathClock
 import deathClock.SummonDeathPower
 import deathClock.resetSummonDeath
 
-class NewLife : CustomCard(
+class Resurrection : CustomCard(
     ID,
     name,
     "images/cards/DodgeDeath.png",
@@ -25,7 +25,7 @@ class NewLife : CustomCard(
 ) {
 
     companion object {
-        val ID = DeathClock.getId("NewLife")
+        val ID = DeathClock.getId("Resurrection")
         private val cardStrings = CardCrawlGame.languagePack.getCardStrings(ID)
         val name = cardStrings.NAME!!
         val description = cardStrings.DESCRIPTION!!

@@ -2,7 +2,6 @@ package deathClock.cards
 
 import basemod.abstracts.CustomCard
 import com.megacrit.cardcrawl.actions.common.GainBlockAction
-import com.megacrit.cardcrawl.cards.blue.Blizzard
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
@@ -11,7 +10,7 @@ import deathClock.AbstractCardEnum
 import deathClock.DeathClock
 import deathClock.applySummonDeath
 
-class FutureProblem : CustomCard(
+class Sacrifice : CustomCard(
     ID,
     name,
     "images/cards/DodgeDeath.png",
@@ -24,7 +23,7 @@ class FutureProblem : CustomCard(
 ) {
 
     companion object {
-        val ID = DeathClock.getId("FutureProblem")
+        val ID = DeathClock.getId("Sacrifice")
         private val cardStrings = CardCrawlGame.languagePack.getCardStrings(ID)
         val name = cardStrings.NAME!!
         val description = cardStrings.DESCRIPTION!!

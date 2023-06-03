@@ -23,10 +23,10 @@ class DeathsCalling : CustomRelic(
 
     override fun atTurnStart() {
         super.atTurnStart()
-        AbstractDungeon.player!!.applySummonDeath(1)
         AbstractDungeon.getMonsters().monsters.forEach { monster ->
             monster.applySummonDeath(1)
         }
+        AbstractDungeon.player!!.applySummonDeath(1)
     }
 
 }

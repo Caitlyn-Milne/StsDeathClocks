@@ -8,7 +8,7 @@ import deathClock.AbstractCardEnum
 import deathClock.DeathClock
 import deathClock.SummonDeathPower
 
-class SevernTrumpets : CustomCard(
+class SevenTrumpets : CustomCard(
     ID,
     name,
     "images/cards/DodgeDeath.png",
@@ -21,7 +21,7 @@ class SevernTrumpets : CustomCard(
 ) {
 
     companion object {
-        val ID = DeathClock.getId("SevernTrumpets")
+        val ID = DeathClock.getId("SevenTrumpets")
         private val cardStrings = CardCrawlGame.languagePack.getCardStrings(ID)
         val name = cardStrings.NAME!!
         val description = cardStrings.DESCRIPTION!!

@@ -10,7 +10,7 @@ import deathClock.*
 class Satanic : CustomCard(
     ID,
     name,
-    "images/cards/DodgeDeath.png",
+    "images/cards/Satanic.png",
     cost,
     description,
     CardType.ATTACK,

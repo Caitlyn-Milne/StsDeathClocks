@@ -46,10 +46,10 @@ class DeathClock :
 
         val DeathCards : List<CustomCard> by lazy { listOf(
             Satanic(),
-            SevernTrumpets(),
-            NewLife(),
+            SevenTrumpets(),
+            Resurrection(),
             NotMyProblem(),
-            FutureProblem(),
+            Sacrifice(),
             DodgeDeath(),
             ScytheStrike()
         ) }
@@ -127,10 +127,10 @@ class DeathClock :
     override fun receivePostCreateStartingDeck(player : AbstractPlayer.PlayerClass, cards: CardGroup) {
         cards.addToBottom(ScytheStrike())
         cards.addToBottom(DodgeDeath())
-        cards.addToBottom(FutureProblem())
+        cards.addToBottom(Sacrifice())
         cards.addToBottom(NotMyProblem())
-        cards.addToBottom(NewLife())
-        cards.addToBottom(SevernTrumpets())
+        cards.addToBottom(Resurrection())
+        cards.addToBottom(SevenTrumpets())
         cards.addToBottom(Satanic())
     }
 
