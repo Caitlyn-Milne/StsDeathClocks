@@ -14,7 +14,7 @@ import deathClock.resetSummonDeath
 class Resurrection : CustomCard(
     ID,
     name,
-    "images/cards/DodgeDeath.png",
+    "images/cards/Resurrection.png",
     cost,
     description,
     CardType.SKILL,
