@@ -126,13 +126,29 @@ class DeathClock :
     }
 
     override fun receivePostCreateStartingDeck(player : AbstractPlayer.PlayerClass, cards: CardGroup) {
+        var removedStrike = false
+        var removedDefend = false
+        for(i in cards.size() - 1 downTo 0) {
+            val card = cards.group[i]
+            if (card.isStarterStrike && !removedStrike) {
+                cards.removeCard(card)
+                removedStrike = true
+            }
+            else if (card.isStarterDefend && !removedDefend) {
+                cards.removeCard(card)
+                removedDefend = true
+            }
+            if(removedStrike && removedDefend) break
+        }
+
         cards.addToBottom(ScytheStrike())
         cards.addToBottom(DodgeDeath())
-        cards.addToBottom(Sacrifice())
+
+        /*cards.addToBottom(Sacrifice())
         cards.addToBottom(NotMyProblem())
         cards.addToBottom(Resurrection())
         cards.addToBottom(SevenTrumpets())
-        cards.addToBottom(Satanic())
+        cards.addToBottom(Satanic())*/
     }
 
     override fun receiveEditKeywords() {

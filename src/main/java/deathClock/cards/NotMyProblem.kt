@@ -13,7 +13,7 @@ import deathClock.applySummonDeath
 class NotMyProblem : CustomCard(
     ID,
     name,
-    "images/cards/DodgeDeath.png",
+    "images/cards/TEMP.png",
     cost,
     description,
     CardType.SKILL,

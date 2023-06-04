@@ -11,7 +11,7 @@ import deathClock.SummonDeathPower
 class SevenTrumpets : CustomCard(
     ID,
     name,
-    "images/cards/DodgeDeath.png",
+    "images/cards/TEMP.png",
     cost,
     description,
     CardType.POWER,

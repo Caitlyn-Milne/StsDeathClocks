@@ -20,7 +20,7 @@ class Resurrection : CustomCard(
     CardType.SKILL,
 
     AbstractCardEnum.DEATH_CLOCK_DEATH,
-    CardRarity.COMMON,
+    CardRarity.UNCOMMON,
     CardTarget.SELF
 ) {
 

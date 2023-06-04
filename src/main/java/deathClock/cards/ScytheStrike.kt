@@ -9,7 +9,6 @@ import deathClock.AbstractCardEnum
 import deathClock.DeathClock.Companion.getId
 import deathClock.applySummonDeath
 import deathClock.damage
-import deathClock.reduceSummonDeath
 
 
 class ScytheStrike : CustomCard(
@@ -24,7 +23,7 @@ class ScytheStrike : CustomCard(
     CardTarget.ENEMY) {
 
     init {
-        baseDamage = 6
+        baseDamage = 4
         baseMagicNumber = 1
         tags.add(CardTags.STRIKE)
     }

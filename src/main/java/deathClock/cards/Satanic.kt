@@ -18,7 +18,7 @@ class Satanic : CustomCard(
     description,
     CardType.ATTACK,
     AbstractCardEnum.DEATH_CLOCK_DEATH,
-    CardRarity.UNCOMMON,
+    CardRarity.COMMON,
     CardTarget.SELF_AND_ENEMY
 ) {
 

@@ -1,16 +1,13 @@
 package deathClock.cards
 
 import basemod.abstracts.CustomCard
-import com.evacipated.cardcrawl.mod.stslib.patches.cardInterfaces.CardSpawnModificationPatch.CardRewardModificationPatches
 import com.megacrit.cardcrawl.actions.common.GainBlockAction
 import com.megacrit.cardcrawl.characters.AbstractPlayer
 import com.megacrit.cardcrawl.core.CardCrawlGame
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon
 import com.megacrit.cardcrawl.monsters.AbstractMonster
-import com.megacrit.cardcrawl.screens.CardRewardScreen
 import deathClock.AbstractCardEnum
 import deathClock.DeathClock
-import deathClock.applySummonDeath
 import deathClock.reduceSummonDeath
 
 class DodgeDeath() : CustomCard(
@@ -35,7 +32,7 @@ class DodgeDeath() : CustomCard(
     }
 
     init {
-        baseBlock = 5
+        baseBlock = 4
         baseMagicNumber = 1
     }
 
